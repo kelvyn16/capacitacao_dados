@@ -22,7 +22,7 @@ Entretanto, pelo fato de lidarmos com a base airports.csv que possui missing val
 
 Para o estudo, foram propostas três análises, a fim de desenvolver soluções e melhorias no processo de compra  dos clientes, foram elas:
 
-#### Análise 1 - flying abroad:  
+#### Análise 1 - Flying abroad:  
 
 #### Análise 2 - Super combo:  
 
