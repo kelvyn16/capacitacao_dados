@@ -33,7 +33,7 @@ Para o estudo, foram propostas três análises, a fim de desenvolver soluções 
     Me deparei com uma situação que chamou a atenção, a possibilidade de utilizar milhas internacionais de Cias aéreas estrangeiras para emissão dos voos com um custo de cerca de 40% menor que os comprados convencionalmente, sejam passagens tarifadas ou até mesmo por milhas em companhias nacionais.
     Entretanto mesmo com esses fatores que possibilitam ganhos consideráveis para empresa, as emissões são realizadas manualmente, além do cliente ter que enviar um e-mail para orçamento das passagens em questão. Processo no qual, demanda muito tempo dos analistas e acarreta em uma experiência ruim para os clientes, pela demora no procedimento.
 
-3 - Execução passo a passo - Técnicas e algoritimos utilizadas
+3 - Execução passo a passo e análises realizadas - Técnicas e algoritimos
 
    Primeiramente importei as bibliotecas Pandas, Numpy e Matplotlib. Em seguida importei os arquivos Csv, atribuindo uma variável para cada um deles. Posteriormente realizei uma limpeza dos missing values para evitar erros e problemas na execução dos dados, conforme seguem abaixo: conforme seguem os códigos abaixo:
    
@@ -52,9 +52,28 @@ airport.head(10)
 
 airport.dropna(subset = ["continent"], inplace = True)
 ~~~
+Após a importação e limpeza dos dados, inicie as querys para mapeamento dos dados de procura e compra de passagens aéreas para destinos internacionais. Para primeira análise, vamos agrupar e somar a quantidade de voos comprados para os destinos internacionais saindo do Brasil Com a criação de query, vamos determinar a conversão das buscas realizadas em compras em nosso site. A partir deste momento, buscar soluções para aumentar as vendas. Para tanto, foi utilizado o código abaixo:
 
-airport | country |	continent |	airports_group
------------------------------------------------
+~~~
+inter = combine.query('country != "BR"').groupby("airport_to").sum().sort_values(by = "comprou", ascending=False).head(10)
+inter
+~~~
+            
+        
+   buscou   |colocou_no_carrinho    |   comprou
+			
+EZE	 |23458	|       37350           |	5137
+SCL	 |103230|       32097           |	4931
+LIS	 |103552|       25369           |	2656
+MIA	 |89557 |       20999           |	2484
+MCO	 |58404 |       16101           |	1604
+LHR	 |9260  |       8514            |	1474
+ASU	 |24686 |       5990            |	1219
+JFK	 |13248 |       10520           |	1192
+MVD	 |25788 |       6541            |	1120
+CDG	 |6725  |       7083            |	945
+
+Foi possível observar que 
 
 5 - Deploy
   
