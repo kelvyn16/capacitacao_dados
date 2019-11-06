@@ -30,8 +30,8 @@ Para o estudo, foram propostas três análises, a fim de desenvolver soluções 
 
 2 - Motivação da análise
     Recentemente realizei buscas em nossos sites, a fim de encontrar uma passagem com preço acessível para diminuir os custos do meu intercâmbio. 
-    Me deparei com uma situação que chamou a atenção, a possibilidade de utilizar milhas internacionais de Cias aéreas estrangeiras para emissão dos voos com um custo de cerca de 40% menor que os comprados convencionalmente, sejam passagens tarifadas ou até mesmo por milhas em companhias nacionais. 
-    
+    Me deparei com uma situação que chamou a atenção, a possibilidade de utilizar milhas internacionais de Cias aéreas estrangeiras para emissão dos voos com um custo de cerca de 40% menor que os comprados convencionalmente, sejam passagens tarifadas ou até mesmo por milhas em companhias nacionais.
+    Entretanto mesmo com esses fatores que possibilitam ganhos consideráveis para empresa, as emissões são realizadas manualmente, além do cliente ter que enviar um e-mail para orçamento das passagens em questão. Processo no qual, demanda muito tempo dos analistas e acarreta em uma experiência ruim para os clientes, pela demora no procedimento.
 
 3 - Execução passo a passo - Técnicas e algoritimos utilizadas
 
@@ -53,11 +53,23 @@ airport.head(10)
 airport.dropna(subset = ["continent"], inplace = True)
 ~~~
 
+airport | country |	continent |	airports_group
+-------- --------- ----------   --------------
+1	|MVF	BR	NaN	NaN
+2	|OGG	US	NaN	NaN
+3	|YYT	CA	NaN	NaN
+4	|ASE	US	NaN	NaN
+5	|ELS	ZA	NaN	NaN
+6	|KRL	CN	NaN	NaN
+7	|MMX	SE	NaN	NaN
+8	|ACC	GH	NaN	NaN
+9	|REP	KH	NaN	NaN
+10	|YQM	CA	NaN	NaN
 5 - Deploy
-    [Descreva como você colocaria e manteria a sua solução em produção no AWS]
+  
 
 6 -Benchmark e Melhorias
-    Relacionar o preço médio das buscas de voos internacionais por intervalo de data, destino 
+    Relacionar o preço médio das buscas de voos internacionais por intervalo de data e destino. Para tanto será necessário um dataset que traga tais informações de registro de transações que hoje são criadas manualmente para emissão que ocorre da mesma forma, diretamente no site da Cia aérea.  
 
 
 #### Análise 2 - Super combo:  
