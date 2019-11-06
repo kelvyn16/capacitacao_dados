@@ -54,17 +54,8 @@ airport.dropna(subset = ["continent"], inplace = True)
 ~~~
 
 airport | country |	continent |	airports_group
--------- --------- ----------   --------------
-1	|MVF	BR	NaN	NaN
-2	|OGG	US	NaN	NaN
-3	|YYT	CA	NaN	NaN
-4	|ASE	US	NaN	NaN
-5	|ELS	ZA	NaN	NaN
-6	|KRL	CN	NaN	NaN
-7	|MMX	SE	NaN	NaN
-8	|ACC	GH	NaN	NaN
-9	|REP	KH	NaN	NaN
-10	|YQM	CA	NaN	NaN
+-----------------------------------------------
+
 5 - Deploy
   
 
