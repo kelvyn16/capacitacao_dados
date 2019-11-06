@@ -38,7 +38,8 @@ Para o estudo, foram propostas três análises, a fim de desenvolver soluções 
    Primeiramente importei as bibliotecas Pandas, Numpy e Matplotlib. Em seguida importei os arquivos Csv, atribuindo uma variável para cada um deles. Posteriormente realizei uma limpeza dos missing values para evitar erros e problemas na execução dos dados, conforme seguem abaixo: conforme seguem os códigos abaixo:
    
  
-`import pandas as pd
+~~~
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -49,7 +50,8 @@ airport.dropna(subset = ["country"], inplace = True)
 airport.shape[0]
 airport.head(10)
 
-airport.dropna(subset = ["continent"], inplace = True)`
+airport.dropna(subset = ["continent"], inplace = True)
+~~~
 
 5 - Deploy
     [Descreva como você colocaria e manteria a sua solução em produção no AWS]
