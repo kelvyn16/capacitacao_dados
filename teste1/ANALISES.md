@@ -22,7 +22,41 @@ Entretanto, pelo fato de lidarmos com a base airports.csv que possui missing val
 
 Para o estudo, foram propostas três análises, a fim de desenvolver soluções e melhorias no processo de compra  dos clientes, foram elas:
 
-#### Análise 1 - Flying abroad:  
+#### Análise 1 - Flying abroad:
+1 - Qual é a análise:
+    Filtrar dentro da base de dados, os destinos internacionais com voos partindo do Brasil para o exterior e mapear a relação entre os destinos mais procurados e que são inseridos em uma etapa de compra(inserida no carrinho) e a quantidade de compras finalizadas pelo conjunto de usuários.
+    
+    A ideia principal é listar em ordem crescente de compras de voos internacionais e oferecer novas possibilidades dentro do nosso site, aumentando assim a taxa de conversão para cada destino.
+
+2 - Motivação da análise
+    Recentemente realizei buscas em nossos sites, a fim de encontrar uma passagem com preço acessível para diminuir os custos do meu intercâmbio. 
+    Me deparei com uma situação que chamou a atenção, a possibilidade de utilizar milhas internacionais de Cias aéreas estrangeiras para emissão dos voos com um custo de cerca de 40% menor que os comprados convencionalmente, sejam passagens tarifadas ou até mesmo por milhas em companhias nacionais. 
+    
+
+3 - Execução passo a passo - Técnicas e algoritimos utilizadas
+
+    Primeiramente importei as bibliotecas Pandas, Numpy e Matplotlib. Em seguida importei os arquivos Csv, atribuindo uma variável para cada um deles. Posteriormente realizei uma limpeza dos missing values para evitar erros e problemas na execução dos dados, conforme seguem abaixo: conforme seguem os códigos abaixo:
+   
+ 
+`import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+airport = pd.read_csv(r"C:\Users\augus\Desktop\airports.csv")
+user = pd.read_csv(r"C:\Users\augus\Desktop\users.csv")
+
+airport.dropna(subset = ["country"], inplace = True)
+airport.shape[0]
+airport.head(10)
+
+airport.dropna(subset = ["continent"], inplace = True)`
+
+5 - Deploy
+    [Descreva como você colocaria e manteria a sua solução em produção no AWS]
+
+6 -Benchmark e Melhorias
+    Relacionar o preço médio das buscas de voos internacionais por intervalo de data, destino 
+
 
 #### Análise 2 - Super combo:  
 
