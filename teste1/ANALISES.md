@@ -24,12 +24,14 @@ Para o estudo, foram propostas três análises, a fim de desenvolver soluções 
 
 #### Análise 1 - Flying abroad:
 1 - Qual é a análise
-    Filtrar dentro da base de dados, os destinos internacionais com voos partindo do Brasil para o exterior e mapear a relação entre os destinos mais procurados e que são inseridos em uma etapa de compra(inserida no carrinho) e a quantidade de compras finalizadas pelo conjunto de usuários.
+    
+   Filtrar dentro da base de dados, os destinos internacionais com voos partindo do Brasil para o exterior e mapear a relação entre os destinos mais procurados e que são inseridos em uma etapa de compra(inserida no carrinho) e a quantidade de compras finalizadas pelo conjunto de usuários.
     
    A ideia principal é listar em ordem crescente de compras de voos internacionais e oferecer novas possibilidades dentro do nosso site, aumentando assim a taxa de conversão para cada destino.
 
 2 - Motivação da análise
-    Recentemente realizei buscas em nossos sites, a fim de encontrar uma passagem com preço acessível para diminuir os custos do meu intercâmbio. 
+    
+   Recentemente realizei buscas em nossos sites, a fim de encontrar uma passagem com preço acessível para diminuir os custos do meu intercâmbio. 
     Me deparei com uma situação que chamou a atenção, a possibilidade de utilizar milhas internacionais de Cias aéreas estrangeiras para emissão dos voos com um custo de cerca de 40% menor que os comprados convencionalmente, sejam passagens tarifadas ou até mesmo por milhas em companhias nacionais.
     Entretanto mesmo com esses fatores que possibilitam ganhos consideráveis para empresa, as emissões são realizadas manualmente, além do cliente ter que enviar um e-mail para orçamento das passagens em questão. Processo no qual, demanda muito tempo dos analistas e acarreta em uma experiência ruim para os clientes, pela demora no procedimento.
 
