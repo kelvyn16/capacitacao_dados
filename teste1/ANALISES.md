@@ -59,6 +59,8 @@ inter = combine.query('country != "BR"').groupby("airport_to").sum().sort_values
 inter
 
 inter.plot(kind = "bar")
+
+inter.describe()
 ~~~
             
         
@@ -174,6 +176,8 @@ ofertante = user.groupby("ano_mes_da_acao").sum().sort_values(by = "comprou")
 ofertante
 
 ofertante.describe()
+
+ofertante['comprou'].plot(kind = "bar")
 ~~~
 
 ano_mes_da_acao| buscou     |colocou_no_carrinho |	comprou
@@ -193,6 +197,25 @@ ano_mes_da_acao| buscou     |colocou_no_carrinho |	comprou
 2019-03	       | 1229900	|    348882	         | 94809
 2019-01	       | 1628443	|    395176	         | 103550
 
+
+É possível observar que entre os meses de Maio e Outubro, temos uma quantidade de buscas e compras abaixo da média anual que é de 53455 passagens compradas, sendo assim e tal período, podemos realizar mudanças na estrutura do setor de operações para captação de ofertantes.
+
 4 - Propostas baseadas na análise amostral realizada:
 
+* Alteração das campanhas de marketing realizadas durante o ano, trazendo o foco nos meses de baixa de compra de passagens aéreas, com um foco maior em publicações sobre venda e resgate de milhas;
+* Criação de um setor de prospecção de ofertantes, que serão responsáveis por abordagem e qualificação de Leads para aumento no estoque de milhas;
+* Direcionamento da equipe de emissões para funções de organização de estoque de milhas, uma vez que em diversos casos temos divergências em contas de ofertas, fazendo assim com há grandes perdas de milhas  que poderia ser utilizadas posteriormente.
+
 5 -Benchmark e Melhorias
+
+Para uma análise mais aprofundada, deve-se  obter mais informações do tempo de emissão de cada bilhete dividido nos meses coletados, porcentagem de aumento de milhas, o que dificulta a conversão de clientes e geram insatisfação nos clientes.
+
+Ainda é necessário levantar a quantidade de funcionários em cada mês para saber se há uma relação entre mão de obra e não desistência de compra, uma vez que quando o cliente espera muito pelo atendimento e acaba desistindo da emissão do bilhete no meio do processo.
+
+# Conclusão
+
+Com as bases em questão, foi possível determinar alguns padrões de compras e busca dos usuários em nosso site. Informações como, quantidade de compras em relação aos meses, destinos internacionais mais procurados, entre outras análises descritas anteriormente.
+
+Importante destacar que esté é apenas o início do projeto, sendo assim o mesmo receberá mais dados para agregar informações relevantes de outras bases.
+
+A descrição dos métodos estão presentes no mesmo repositório onde se encontra o arquivo ANALISES.md, sendo assim, fique a vontade para acompanhar o que foi realizado, assim como, gráficos plotados para exemplificar e demais tabelas(frames) utilizados no processo.
