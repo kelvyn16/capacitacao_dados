@@ -120,6 +120,12 @@ region
 region.plot(kind = "bar")
 ~~~
 
+airport_to |buscou|colocou_no_carrinho	|comprou
+-----------|------|---------------------|---------		
+GRU	       |590184|	336489              |	84500
+CGH	       |450160|	229476              |	71942
+VCP	       |141479|	52937               |	12387
+
 4 - Propostas baseadas na análise amostral realizada:
 
 * Buscar parcerias para o translado de passageiros que necessitam ir em direção ao centro de São Paulo e demais regiões em direção oposta de Guarulhos ou até mesmo partindo de Guarulhos em direção à Campinas, quando os voos disponíveis neste aeroporto(GRU) estão com preços baixos;
