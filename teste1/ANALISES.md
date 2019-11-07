@@ -23,7 +23,7 @@ Entretanto, pelo fato de lidarmos com a base airports.csv que possui missing val
 Para o estudo, foram propostas três análises, a fim de desenvolver soluções e melhorias no processo de compra  dos clientes, foram elas:
 
 #### Análise 1 - Flying abroad:
-1 - Qual é a análise:
+1 - Qual é a análise
     Filtrar dentro da base de dados, os destinos internacionais com voos partindo do Brasil para o exterior e mapear a relação entre os destinos mais procurados e que são inseridos em uma etapa de compra(inserida no carrinho) e a quantidade de compras finalizadas pelo conjunto de usuários.
     
    A ideia principal é listar em ordem crescente de compras de voos internacionais e oferecer novas possibilidades dentro do nosso site, aumentando assim a taxa de conversão para cada destino.
@@ -79,7 +79,7 @@ Foi possível observar que temos mais procura para o destino de Lisboa do que pa
 
 Outro fator relevante foi a taxa de conversão de compra dos bilhetes para Londres(Heathrow) cerca de 15,91%, fator este que deve ser analisado profundamente para desenvolver ações de maior procura pelo destino, como promoções, matérias no blog e até mesmo proporcionar um roteiro acessível, com parcerias com hostels, uma vez que a moeda local é elevada em comparação ao real. Paris possui um caso semelhante com taxa de conversão de 14,05%.
 
-4 - Propostas baseadas na análise amostral realizada:
+4 - Propostas baseadas na análise amostral realizada
 
 * Ações para captação de ofertantes com milhas internacionais, a fim de aumentar o banco de milhas disponíveis;
 * Registro dos principais trechos procurados diretamente no site(são eles os 10 registrados na tabela anterior), tendo em vista uma maior visibilidade para os clientes e um aumento de receita para a empresa;
@@ -92,12 +92,12 @@ Outro fator relevante foi a taxa de conversão de compra dos bilhetes para Londr
 
 #### Análise 2 - Super combo:  
 
-1 - Qual é a análise:
+1 - Qual é a análise
  
 A presente análise visa comparar dentro de um mesmo estado, aeroportos próximos, nos quais desejamos entender se é viável oferecer pacotes que incluem, passagem aérea e serviço de taxi. 
  
 
-2 - Motivação da análise:
+2 - Motivação da análise
 
 Grande procura de voos  para região de São Paulo, devido a importância do estado e principalmente da capital e o município de Campinas. 
 
@@ -111,7 +111,7 @@ A análise em  questão seguiu a mesma metodologia descrita anteriormente, com i
 
 Em seguida definiu-se uma variável para inserir uma query que agrupasse os aeroportos citados anteriormente e em seguida somar as colunas de buscou, colocou_no_carrinho e comprou. Além disso, ainda realizou-se uma plotagem de um gráfico de barras para visualização.
 
-Para tanto, o código ficou da seguinte maneira:
+Para tanto, o código ficou da seguinte maneira
 
 ~~~
 region = combine.query('airports_group == "SAO"').groupby("airport_to").sum().sort_values(by = "comprou", ascending=False).head(10)
@@ -126,6 +126,13 @@ GRU	       |590184|	336489              |	84500
 CGH	       |450160|	229476              |	71942
 VCP	       |141479|	52937               |	12387
 
+
+Taxa de conversão em relação à busca: CGH = 15,98% - VCP = 8,7% - GRU 14,31%
+
+A busca para o aeroporto de campinas é 1/3 da busca do aeroporto de Congonhas, porém a porcentagem de conversão de compra é quase a metade. Guarulhos possui uma taxa elevada de busca, porém a taxa conversão em compra em função da busca é menor que a taxa de conversão de congonhas. 
+
+Em média voar direto para Congonhas é mais caro que para Guarulhos, porém e se oferecermos um serviço combo com descontos para o deslocamento De Guarulhos para o centro da cidade. Com uma boa parceria, podemos oferecer a possibilidade para os clientes que procuram o melhor preço.
+
 4 - Propostas baseadas na análise amostral realizada:
 
 * Buscar parcerias para o translado de passageiros que necessitam ir em direção ao centro de São Paulo e demais regiões em direção oposta de Guarulhos ou até mesmo partindo de Guarulhos em direção à Campinas, quando os voos disponíveis neste aeroporto(GRU) estão com preços baixos;
@@ -139,4 +146,53 @@ VCP	       |141479|	52937               |	12387
 * Encontrar bases de períodos de maior procura dos bilhetes, a fim de sugerir ao cliente a melhor época para compra.
 
 
-#### Análise 3 - Férias imprevisíveis: 
+#### Análise 3 - Caça às Milhas: 
+
+1 - Qual é a análise:
+
+Determinar os meses onde temos uma taxa menor de compra de passagem aérea, a fim de direcionar esforços na captação de ofertantes para aumentar o nosso estoque e fidelizando os clientes com um atendimento de qualidade, nos preparando assim para os meses de maior procura e campanhas, como Black Friday e Dia Mundial da Milhas. 
+
+2 - Motivação da análise
+
+Todos os anos encontramos dificuldade com estoque de milhas quando nos aproximamos dos meses de maior demanda de compra de passagens por parte dos nossos clientes. Nos momentos de maior dificuldades, muitas vezes acabamos captando contas de estouros ou emitindo via parceira, o que acaba aumentando o custo das passagens aéreas e consequentemente diminuindo os nossos lucro.
+
+3 - Execução passo a passo e análises realizadas - Técnicas e algoritimos
+
+Utilizaremos desta vez apenas uma das bases fornecidas, uma vez que as informações distribuídas em colunas que precisamos estão dentro do mesmo arquivo .csv.
+
+Desta forma, necessitamos importar apenas a biblioteca Pandas, conforme código abaixo:
+~~~
+import pandas as pd
+
+user = pd.read_csv(r"C:\Users\augus\Desktop\users.csv", sep = ';')
+~~~
+
+Após a importação do arquivo, iremos agrupar os dados por mês e ano da ação e ordenar da menor quantidade de compras efetuadas para a maior, de acordo com a linha código abaixo:
+
+~~~
+ofertante = user.groupby("ano_mes_da_acao").sum().sort_values(by = "comprou")
+ofertante
+
+ofertante.describe()
+~~~
+
+ano_mes_da_acao| buscou     |colocou_no_carrinho |	comprou
+---------------|------------|--------------------|------		
+2018-09	       | 7	        |       1	         |   0
+2019-10	       | 5	        |       0	         |   0
+2019-05	       | 813247	    |    142337	         | 31193
+2019-06	       | 860999	    |    167404	         | 33560
+2019-07	       | 1055208	|    210115	         | 38143
+2019-09	       | 946538	    |    199862	         | 39881
+2019-08	       | 1050087	|    224958	         | 44485
+2018-10	       | 829055	    |    179249	         | 47464
+2019-04	       | 1183907	|    289121	         | 73237
+2018-12	       | 1325117	|    276951	         | 74169
+2019-02	       | 1170479	|    311430	         | 83789
+2018-11	       | 1445384	|    324378	         | 84091
+2019-03	       | 1229900	|    348882	         | 94809
+2019-01	       | 1628443	|    395176	         | 103550
+
+4 - Propostas baseadas na análise amostral realizada:
+
+5 -Benchmark e Melhorias
