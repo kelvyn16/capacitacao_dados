@@ -57,6 +57,8 @@ Após a importação e limpeza dos dados, inicie as querys para mapeamento dos d
 ~~~
 inter = combine.query('country != "BR"').groupby("airport_to").sum().sort_values(by = "comprou", ascending=False).head(10)
 inter
+
+inter.plot(kind = "bar")
 ~~~
             
         
@@ -73,15 +75,62 @@ JFK	   |13248 |       10520           |	1192
 MVD	   |25788 |       6541            |	1120
 CDG	   |6725  |       7083            |	945
 
-Foi possível observar que 
+Foi possível observar que temos mais procura para o destino de Lisboa do que para Santiago, porém a taxa de conversão em compras para o Santiago é quase o dobro 4,7% contra 2,5% de taxa de conversão.
 
-5 - Deploy
-  
+Outro fator relevante foi a taxa de conversão de compra dos bilhetes para Londres(Heathrow) cerca de 15,91%, fator este que deve ser analisado profundamente para desenvolver ações de maior procura pelo destino, como promoções, matérias no blog e até mesmo proporcionar um roteiro acessível, com parcerias com hostels, uma vez que a moeda local é elevada em comparação ao real. Paris possui um caso semelhante com taxa de conversão de 14,05%.
 
-6 -Benchmark e Melhorias
-    Relacionar o preço médio das buscas de voos internacionais por intervalo de data e destino. Para tanto será necessário um dataset que traga tais informações de registro de transações que hoje são criadas manualmente para emissão que ocorre da mesma forma, diretamente no site da Cia aérea.  
+4 - Propostas baseadas na análise amostral realizada:
+
+* Ações para captação de ofertantes com milhas internacionais, a fim de aumentar o banco de milhas disponíveis;
+* Registro dos principais trechos procurados diretamente no site(são eles os 10 registrados na tabela anterior), tendo em vista uma maior visibilidade para os clientes e um aumento de receita para a empresa;
+* Automatização das emissões por milhas internacionas, visando assim o ganho de performance da equipe, assim como é atualmente as emissões nacionais.
+
+5 -Benchmark e Melhorias
+    
+   Relacionar o preço médio das buscas de voos internacionais por intervalo de data e destino. Para tanto será necessário um dataset que traga tais informações de registro de transações que hoje são criadas manualmente para emissão que ocorre da mesma forma, diretamente no site da Cia aérea.  
 
 
 #### Análise 2 - Super combo:  
+
+1 - Qual é a análise:
+ 
+A presente análise visa comparar dentro de um mesmo estado, aeroportos próximos, nos quais desejamos entender se é viável oferecer pacotes que incluem, passagem aérea e serviço de taxi. 
+ 
+
+2 - Motivação da análise:
+
+Grande procura de voos  para região de São Paulo, devido a importância do estado e principalmente da capital e o município de Campinas. 
+
+Desta forma, em diversas situações os clientes necessitam ir à um dos locais, seja mais próximo do centro de São Paulo, no qual o aeroporto de Congonhas é a melhor opção, porém com um preço elevado ou se deslocar diretamente para campinas, porém os voos para o aeroporto de Viracopos ocorrem em menor número e muitas vezes com um preço bem salgado. 
+
+Sendo assim o aeroporto de Guarulhos em muitos casos acaba se tornando a melhor opção em relação à preço, entretanto fica distante do centro da cidade e a distância é maior ainda quando pensamos em Campinas. A ideia é determinar por meio da análise da taxa de conversão de busca em compra, se o resultado de desistência de compras é significativa em CGH e VCP em relação à GRU. 
+
+3 - Execução passo a passo e análises realizadas - Técnicas e algoritimos
+
+A análise em  questão seguiu a mesma metodologia descrita anteriormente, com importação das bibliotecas, aproveitando o data wrangling realizado no início do projeto.
+
+Em seguida definiu-se uma variável para inserir uma query que agrupasse os aeroportos citados anteriormente e em seguida somar as colunas de buscou, colocou_no_carrinho e comprou. Além disso, ainda realizou-se uma plotagem de um gráfico de barras para visualização.
+
+Para tanto, o código ficou da seguinte maneira:
+
+~~~
+region = combine.query('airports_group == "SAO"').groupby("airport_to").sum().sort_values(by = "comprou", ascending=False).head(10)
+region
+
+region.plot(kind = "bar")
+~~~
+
+4 - Propostas baseadas na análise amostral realizada:
+
+* Buscar parcerias para o translado de passageiros que necessitam ir em direção ao centro de São Paulo e demais regiões em direção oposta de Guarulhos ou até mesmo partindo de Guarulhos em direção à Campinas, quando os voos disponíveis neste aeroporto(GRU) estão com preços baixos;
+
+*  Fornecer ao comprador uma cotação antecipada, ressaltando se a economia na passagem em questão compensará o gasto com o translado.
+
+
+5 -Benchmark e Melhorias
+    
+* Comparar preços durante o ano para determinar se o combo é viável, levando em conta a demanda de serviço gerada;
+* Encontrar bases de períodos de maior procura dos bilhetes, a fim de sugerir ao cliente a melhor época para compra.
+
 
 #### Análise 3 - Férias imprevisíveis: 
